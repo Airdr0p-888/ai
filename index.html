@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agent AI · Agent ID 专属铸造</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="glow"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">AI</div>
+    <div>
+      <h1>Agent AI <span class="tag">AGT</span></h1>
+      <p>Agent ID 专属铸造 · BSC</p>
+    </div>
+  </div>
+  <button id="connectBtn" class="btn btn-primary">连接钱包</button>
+</header>
+
+<section class="hero">
+  <h2>持有币安 <em>Agent ID</em> 才能铸造</h2>
+  <p>每次 <b id="h_price">0.01</b> USDT 换 <b id="h_perMint">21,000</b> 枚 AGT，单地址上限 <b id="h_limit">3</b> 次。<br />
+     下面填地址 → 自动检查资格 → 复制指令发给你的 AI 代理即可。</p>
+</section>
+
+<main>
+  <div class="grid">
+    <!-- 铸造区 -->
+    <div class="card">
+      <h3>铸造区</h3>
+
+      <div class="field">
+        <label>钱包地址 / .ai 名称</label>
+        <input id="addr" placeholder="0x… 或 yourname.ai" />
+        <span class="hint">填 .ai 名称时请同时确认它对应的 0x 地址，链上检查需要地址</span>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Agent ID 编号（选填）</label>
+          <input id="tokenId" placeholder="例如 1234" />
+        </div>
+        <div class="field">
+          <label>铸造次数</label>
+          <select id="count">
+            <option value="1">1 次</option>
+            <option value="2">2 次</option>
+            <option value="3">3 次</option>
+          </select>
+        </div>
+      </div>
+
+      <details class="adv">
+        <summary>高级：合约 / 代币参数</summary>
+        <div class="field"><label>合约地址</label><input id="contract" value="0xeAcd5Eae5A4707Fe2044cB30106B3Baa179b28e3" /></div>
+        <div class="field"><label>USDT 合约</label><input id="usdt" value="0x55d398326f99059fF775485246999027B3197955" /></div>
+        <div class="field"><label>Agent ID NFT</label><input id="nft" value="0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F" /></div>
+      </details>
+
+      <div class="btn-row">
+        <button id="checkBtn" class="btn btn-primary">检查资格</button>
+        <button id="genBtn" class="btn btn-ghost">生成 AI 指令</button>
+      </div>
+
+      <div id="elig" class="elig"></div>
+    </div>
+
+    <!-- 指令区 -->
+    <div class="card card-accent">
+      <h3>AI 指令 <button id="copyBtn" class="btn btn-mini">复制</button></h3>
+      <textarea id="cmd" rows="18" placeholder="填好地址后点「生成 AI 指令」，这里会出现可直接粘贴给 AI 代理的完整指令"></textarea>
+      <p class="hint">把这段指令粘到 Agentic Wallet 的 AI 对话里，它会逐步 preview 并等你确认。</p>
+    </div>
+  </div>
+
+  <!-- 使用说明 -->
+  <div class="card">
+    <h3>让 AI 代理帮你铸造</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h4>开启开发者模式</h4>
+        <p>在币安 App 中，为你的 Agentic Wallet 开启开发者模式。</p>
+        <p class="path">Agentic Wallet → 设置 → 开发者模式</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h4>检查资格</h4>
+        <p>在上方铸造区输入你的 .ai 名称。这个地址需要有：</p>
+        <ul>
+          <li>Agent ID</li>
+          <li>每次 <span class="price">0.01</span> USDT</li>
+          <li>少量 BNB 付手续费</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h4>发给你的 AI 代理</h4>
+        <p>把指令粘贴到 Agentic Wallet 的 AI 对话里。每一步它都会先预览，等你确认后再执行。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-warn">
+    <h3>注意</h3>
+    <ul class="notes">
+      <li>开盘前铸造到的 AGT <b>不可转账</b>，需等开盘后才能交易。</li>
+      <li>每笔交易 AI 都会先 preview，请逐笔看清解析结果与风险再确认。</li>
+      <li>本页只做地址填写与指令生成，不托管私钥、不代发交易。</li>
+    </ul>
+  </div>
+</main>
+
+<footer>Agent AI · AGT — 本页不托管资产，请自行核对合约地址</footer>
+
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
