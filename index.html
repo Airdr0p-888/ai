@@ -50,17 +50,14 @@
         </div>
         <div class="field">
           <label data-i18n="label.count">铸造次数</label>
-          <select id="count">
-            <option value="1" data-i18n="cnt.1">1 次</option>
-            <option value="2" data-i18n="cnt.2">2 次</option>
-            <option value="3" data-i18n="cnt.3">3 次</option>
-          </select>
+          <select id="count"></select>
+          <span class="hint" data-i18n="hint.count">实际可 mint 次数受合约单地址上限约束，点「检查资格」看剩余额度</span>
         </div>
       </div>
 
       <details class="adv">
         <summary data-i18n="adv.summary">高级：合约 / 代币参数</summary>
-        <div class="field"><label data-i18n="label.contract">合约地址</label><input id="contract" value="0xeAcd5Eae5A4707Fe2044cB30106B3Baa179b28e3" /></div>
+        <div class="field"><label data-i18n="label.contract">合约地址</label><input id="contract" value="0x6d57DaCd1ca3076095C32204C3058383eCa94Da7" /></div>
         <div class="field"><label data-i18n="label.usdt">USDT 合约</label><input id="usdt" value="0x55d398326f99059fF775485246999027B3197955" /></div>
         <div class="field"><label data-i18n="label.nft">Agent ID NFT</label><input id="nft" value="0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F" /></div>
       </details>
@@ -168,7 +165,7 @@
   <div class="card card-warn">
     <h3 data-i18n="card.warn">注意</h3>
     <ul class="notes">
-      <li data-i18n="w1">开盘前铸造到的 AGT <b>不可转账</b>，需等开盘后才能交易。</li>
+      <li data-i18n-html="w1">开盘前铸造到的 AGT <b>不可转账</b>，需等开盘后才能交易。</li>
       <li data-i18n="w2">每笔交易 AI 都会先 preview，请逐笔看清解析结果与风险再确认。</li>
       <li data-i18n="w3">本页只做地址填写与指令生成，不托管私钥、不代发交易。</li>
     </ul>
