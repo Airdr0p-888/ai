@@ -147,6 +147,46 @@ textarea { resize: vertical; font-family: ui-monospace, Consolas, monospace; fon
 }
 .step .price { color: var(--gold); font-weight: 600; }
 
+/* 邀请链接条 */
+.invite {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  background: #0b101c; border: 1px solid rgba(124,92,255,.35); border-radius: 12px;
+  padding: 13px 15px; margin-bottom: 16px;
+}
+.invite-txt { flex: 1; min-width: 220px; }
+.invite-txt b { display: block; font-size: 13px; }
+.invite-txt span { font-size: 12px; color: var(--cyan); word-break: break-all; }
+.invite .btn { flex: none; text-decoration: none; }
+
+/* 四列步骤 */
+.steps-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) { .steps-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .steps-4 { grid-template-columns: 1fr; } }
+
+/* 社区入口 */
+.promo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+@media (max-width: 900px) { .promo { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .promo { grid-template-columns: 1fr; } }
+
+.promo a {
+  display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--text);
+  background: #0b101c; border: 1px solid var(--line); border-radius: 13px; padding: 14px;
+  transition: border-color .15s, transform .1s;
+}
+.promo a:hover { border-color: var(--violet); }
+.promo a:active { transform: translateY(1px); }
+.promo b { display: block; font-size: 13px; }
+.promo span { display: block; font-size: 11.5px; color: var(--muted); }
+
+.ic {
+  flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+  font-style: normal; font-size: 12px; font-weight: 800; color: #0a0d16;
+}
+.ic-ai { background: linear-gradient(135deg, var(--cyan), var(--violet)); }
+.ic-tg { background: linear-gradient(135deg, #2aabee, #229ed9); }
+.ic-x { background: linear-gradient(135deg, #f2f4f8, #9aa6b8); }
+.ic-db { background: linear-gradient(135deg, #ffb347, #ff7a45); }
+
 .notes { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--muted); }
 .notes li { margin-bottom: 6px; }
 .notes b { color: var(--text); }

@@ -14,55 +14,60 @@
     <div class="logo">AI</div>
     <div>
       <h1>Agent AI <span class="tag">AGT</span></h1>
-      <p>Agent ID 专属铸造 · BSC</p>
+      <p data-i18n="brand.sub">Agent ID 专属铸造 · BSC</p>
     </div>
   </div>
-  <button id="connectBtn" class="btn btn-primary">连接钱包</button>
+  <div class="topbar-actions">
+    <button id="langBtn" class="btn btn-ghost" title="中文 / English">EN</button>
+    <button id="connectBtn" class="btn btn-primary" data-i18n="btn.connect">连接钱包</button>
+  </div>
 </header>
 
 <section class="hero">
-  <h2>持有币安 <em>Agent ID</em> 才能铸造</h2>
-  <p>每次 <b id="h_price">0.01</b> USDT 换 <b id="h_perMint">21,000</b> 枚 AGT，单地址上限 <b id="h_limit">3</b> 次。<br />
-     下面填地址 → 自动检查资格 → 复制指令发给你的 AI 代理即可。</p>
+  <h2 data-i18n-html="hero.title">持有币安 <em>Agent ID</em> 才能铸造</h2>
+  <p data-i18n-html="hero.sub">
+    每次 <b id="h_price">0.01</b> USDT 换 <b id="h_perMint">21,000</b> 枚 AGT，单地址上限 <b id="h_limit">3</b> 次。<br />
+    下面填地址 → 自动检查资格 → 复制指令发给你的 AI 代理即可。
+  </p>
 </section>
 
 <main>
   <div class="grid">
     <!-- 铸造区 -->
     <div class="card">
-      <h3>铸造区</h3>
+      <h3 data-i18n="card.mint">铸造区</h3>
 
       <div class="field">
-        <label>钱包地址 / .ai 名称</label>
-        <input id="addr" placeholder="0x… 或 yourname.ai" />
-        <span class="hint">填 .ai 名称时请同时确认它对应的 0x 地址，链上检查需要地址</span>
+        <label data-i18n="label.addr">钱包地址 / .ai 名称</label>
+        <input id="addr" data-i18n-ph="ph.addr" placeholder="0x… 或 yourname.ai" />
+        <span class="hint" data-i18n="hint.addr">填 .ai 名称时请同时确认它对应的 0x 地址，链上检查需要地址</span>
       </div>
 
       <div class="field-row">
         <div class="field">
-          <label>Agent ID 编号（选填）</label>
-          <input id="tokenId" placeholder="例如 1234" />
+          <label data-i18n="label.tokenId">Agent ID 编号（选填）</label>
+          <input id="tokenId" data-i18n-ph="ph.tokenId" placeholder="例如 1234" />
         </div>
         <div class="field">
-          <label>铸造次数</label>
+          <label data-i18n="label.count">铸造次数</label>
           <select id="count">
-            <option value="1">1 次</option>
-            <option value="2">2 次</option>
-            <option value="3">3 次</option>
+            <option value="1" data-i18n="cnt.1">1 次</option>
+            <option value="2" data-i18n="cnt.2">2 次</option>
+            <option value="3" data-i18n="cnt.3">3 次</option>
           </select>
         </div>
       </div>
 
       <details class="adv">
-        <summary>高级：合约 / 代币参数</summary>
-        <div class="field"><label>合约地址</label><input id="contract" value="0xeAcd5Eae5A4707Fe2044cB30106B3Baa179b28e3" /></div>
-        <div class="field"><label>USDT 合约</label><input id="usdt" value="0x55d398326f99059fF775485246999027B3197955" /></div>
-        <div class="field"><label>Agent ID NFT</label><input id="nft" value="0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F" /></div>
+        <summary data-i18n="adv.summary">高级：合约 / 代币参数</summary>
+        <div class="field"><label data-i18n="label.contract">合约地址</label><input id="contract" value="0xeAcd5Eae5A4707Fe2044cB30106B3Baa179b28e3" /></div>
+        <div class="field"><label data-i18n="label.usdt">USDT 合约</label><input id="usdt" value="0x55d398326f99059fF775485246999027B3197955" /></div>
+        <div class="field"><label data-i18n="label.nft">Agent ID NFT</label><input id="nft" value="0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F" /></div>
       </details>
 
       <div class="btn-row">
-        <button id="checkBtn" class="btn btn-primary">检查资格</button>
-        <button id="genBtn" class="btn btn-ghost">生成 AI 指令</button>
+        <button id="checkBtn" class="btn btn-primary" data-i18n="btn.check">检查资格</button>
+        <button id="genBtn" class="btn btn-ghost" data-i18n="btn.gen">生成 AI 指令</button>
       </div>
 
       <div id="elig" class="elig"></div>
@@ -70,51 +75,107 @@
 
     <!-- 指令区 -->
     <div class="card card-accent">
-      <h3>AI 指令 <button id="copyBtn" class="btn btn-mini">复制</button></h3>
-      <textarea id="cmd" rows="18" placeholder="填好地址后点「生成 AI 指令」，这里会出现可直接粘贴给 AI 代理的完整指令"></textarea>
-      <p class="hint">把这段指令粘到 Agentic Wallet 的 AI 对话里，它会逐步 preview 并等你确认。</p>
+      <h3><span data-i18n="card.cmd">AI 指令</span><button id="copyBtn" class="btn btn-mini" data-i18n="btn.copy">复制</button></h3>
+      <textarea id="cmd" rows="18" data-i18n-ph="ph.cmd" placeholder="填好地址后点「生成 AI 指令」，这里会出现可直接粘贴给 AI 代理的完整指令"></textarea>
+      <p class="hint" data-i18n="hint.cmd">把这段指令粘到 Agentic Wallet 的 AI 对话里，它会逐步 preview 并等你确认。</p>
     </div>
   </div>
 
   <!-- 使用说明 -->
   <div class="card">
-    <h3>让 AI 代理帮你铸造</h3>
+    <h3 data-i18n="card.steps">让 AI 代理帮你铸造</h3>
     <div class="steps">
       <div class="step">
         <div class="num">01</div>
-        <h4>开启开发者模式</h4>
-        <p>在币安 App 中，为你的 Agentic Wallet 开启开发者模式。</p>
-        <p class="path">Agentic Wallet → 设置 → 开发者模式</p>
+        <h4 data-i18n="s1.h">开启开发者模式</h4>
+        <p data-i18n="s1.p1">在币安 App 中，为你的 Agentic Wallet 开启开发者模式。</p>
+        <p class="path" data-i18n="s1.p2">Agentic Wallet → 设置 → 开发者模式</p>
       </div>
       <div class="step">
         <div class="num">02</div>
-        <h4>检查资格</h4>
-        <p>在上方铸造区输入你的 .ai 名称。这个地址需要有：</p>
+        <h4 data-i18n="s2.h">检查资格</h4>
+        <p data-i18n="s2.p1">在上方铸造区输入你的 .ai 名称。这个地址需要有：</p>
         <ul>
-          <li>Agent ID</li>
-          <li>每次 <span class="price">0.01</span> USDT</li>
-          <li>少量 BNB 付手续费</li>
+          <li data-i18n="s2.l1">Agent ID</li>
+          <li><span data-i18n="s2.l2">每次</span> <span class="price">0.01</span> <span data-i18n="s2.l2b">USDT</span></li>
+          <li data-i18n="s2.l3">少量 BNB 付手续费</li>
         </ul>
       </div>
       <div class="step">
         <div class="num">03</div>
-        <h4>发给你的 AI 代理</h4>
-        <p>把指令粘贴到 Agentic Wallet 的 AI 对话里。每一步它都会先预览，等你确认后再执行。</p>
+        <h4 data-i18n="s3.h">发给你的 AI 代理</h4>
+        <p data-i18n="s3.p1">把指令粘贴到 Agentic Wallet 的 AI 对话里。每一步它都会先预览，等你确认后再执行。</p>
       </div>
     </div>
   </div>
 
+  <!-- Agent ID 申请教程 -->
+  <div class="card">
+    <h3 data-i18n="card.apply">如何申请 Agent ID</h3>
+    <div class="invite">
+      <div class="invite-txt">
+        <b data-i18n="invite.label">专属邀请链接</b>
+        <span>web3.binance.com/agent-id/aveai?src=user_share</span>
+      </div>
+      <a class="btn btn-primary" href="https://web3.binance.com/agent-id/aveai?src=user_share" target="_blank" rel="noopener" data-i18n="invite.go">去注册</a>
+      <button class="btn btn-ghost" data-copy="https://web3.binance.com/agent-id/aveai?src=user_share" data-i18n="invite.copy">复制链接</button>
+    </div>
+    <div class="steps steps-4">
+      <div class="step">
+        <div class="num">01</div>
+        <h4 data-i18n="a1.h">打开邀请链接</h4>
+        <p data-i18n="a1.p">用币安 App 扫码，或在币安 Web3 钱包内置浏览器打开，进入 Agent ID 页面。</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h4 data-i18n="a2.h">连接 / 创建 Agentic Wallet</h4>
+        <p data-i18n="a2.p">钱包里预留一点 BNB 付网络手续费。</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h4 data-i18n="a3.h">选 .ai 名称并提交</h4>
+        <p data-i18n="a3.p">按页面提示完成注册；是否仍需邀请名额，以官方页面显示为准。</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h4 data-i18n="a4.h">回来检查资格</h4>
+        <p data-i18n="a4.p">Agent ID 到账后，在上方铸造区填地址点「检查资格」，显示持有 ≥ 1 即可铸造。</p>
+      </div>
+    </div>
+    <p class="hint" data-i18n="apply.note">注册流程与名额以币安官方页面为准，可能随时调整。</p>
+  </div>
+
+  <!-- 社区与推广入口 -->
+  <div class="card">
+    <h3 data-i18n="card.social">社区与推广入口</h3>
+    <div class="promo">
+      <a href="https://web3.binance.com/agent-id/aveai?src=user_share" target="_blank" rel="noopener">
+        <i class="ic ic-ai">ID</i><b data-i18n="p1.b">Agent ID 邀请</b><span data-i18n="p1.s">注册领取 Agent ID</span>
+      </a>
+      <a href="https://t.me/请替换为你的电报群" target="_blank" rel="noopener">
+        <i class="ic ic-tg">TG</i><b data-i18n="p2.b">Telegram</b><span data-i18n="p2.s">电报社群</span>
+      </a>
+      <a href="https://x.com/请替换为你的账号" target="_blank" rel="noopener">
+        <i class="ic ic-x">X</i><b data-i18n="p3.b">X / Twitter</b><span data-i18n="p3.s">官方推特</span>
+      </a>
+      <a href="https://debox.world/请替换为你的邀请链接" target="_blank" rel="noopener">
+        <i class="ic ic-db">DB</i><b data-i18n="p4.b">Debox</b><span data-i18n="p4.s">Debox 社群</span>
+      </a>
+    </div>
+    <p class="hint" data-i18n="social.note">搜索「请替换」即可找到待填链接；把 Telegram / X / Debox 三个换成你自己的地址。</p>
+  </div>
+
   <div class="card card-warn">
-    <h3>注意</h3>
+    <h3 data-i18n="card.warn">注意</h3>
     <ul class="notes">
-      <li>开盘前铸造到的 AGT <b>不可转账</b>，需等开盘后才能交易。</li>
-      <li>每笔交易 AI 都会先 preview，请逐笔看清解析结果与风险再确认。</li>
-      <li>本页只做地址填写与指令生成，不托管私钥、不代发交易。</li>
+      <li data-i18n="w1">开盘前铸造到的 AGT <b>不可转账</b>，需等开盘后才能交易。</li>
+      <li data-i18n="w2">每笔交易 AI 都会先 preview，请逐笔看清解析结果与风险再确认。</li>
+      <li data-i18n="w3">本页只做地址填写与指令生成，不托管私钥、不代发交易。</li>
     </ul>
   </div>
 </main>
 
-<footer>Agent AI · AGT — 本页不托管资产，请自行核对合约地址</footer>
+<footer data-i18n="footer">Agent AI · AGT — 本页不托管资产，请自行核对合约地址</footer>
 
 <div id="toast"></div>
 

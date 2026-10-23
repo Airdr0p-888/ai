@@ -163,7 +163,7 @@
     const idLine = tid ? `\n我的 Agent ID 编号：#${tid}` : "";
     const tail = count > 1 ? `第 2～${count + 1} 笔` : "第 2 笔";
 
-    return `我有币安 Agentic Wallet，请在 BSC（binanceChainId ${CHAIN_ID}）上帮我铸造 Agent AI（AGT）。
+    return `我有币安 Agentic Wallet，请在 BSC（binanceChainId ${CHAIN_ID}）上帮我铸造 Agent AI（Agent AI）。
 我的钱包地址：${a}${idLine}
 
 规则：
@@ -172,12 +172,12 @@
 - 上一笔在链上确认成功后，再开始下一笔。
 - 任何一步 preview 报错或被拦截，就停下告诉我，不要改参数重试。
 
-第 1 笔：给 AGT 合约授权 ${amountText} USDT（授权额度已够可跳过）
+第 1 笔：给 Agent AI 合约授权 ${amountText} USDT（授权额度已够可跳过）
   合约: ${uAddr}
   调用数据: ${approveData}
   baw contract-call preview --binanceChainId ${CHAIN_ID} --from ${a} --to ${uAddr} --inputData ${approveData} --json
 
-${tail}：调用 AGT 合约的 mint()，共 ${count} 笔，每笔单独 preview + execute，每笔 ${priceText} USDT 换 ${perMint} AGT
+${tail}：调用 Agent AI 合约的 mint()，共 ${count} 笔，每笔单独 preview + execute，每笔 ${priceText} USDT 换 ${perMint} Agent AI
   合约: ${cAddr}
   调用数据: ${MINT_SIG}
   baw contract-call preview --binanceChainId ${CHAIN_ID} --from ${a} --to ${cAddr} --inputData ${MINT_SIG} --json`;
@@ -223,6 +223,18 @@ ${tail}：调用 AGT 合约的 mint()，共 ${count} 笔，每笔单独 preview 
   }
 
   /* ---------- 绑定 ---------- */
+
+  // 通用复制（邀请链接等）
+  document.querySelectorAll("[data-copy]").forEach((b) =>
+    b.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(b.dataset.copy);
+        toast("链接已复制", "ok");
+      } catch {
+        toast("复制失败，请手动复制", "err");
+      }
+    })
+  );
 
   $("connectBtn").addEventListener("click", connect);
   $("checkBtn").addEventListener("click", check);
